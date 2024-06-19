@@ -1,0 +1,170 @@
+/* ==========================================================================
+   #POMODORO APP STYLES
+   ========================================================================== */
+
+/**
+ *
+ * Inheriting box sizing slightly better best-practice
+ * https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+ *
+ */
+
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pomodoro: hsl(223, 25%, 40%);
+  --shortBreak: hsl(48, 23%, 40%);
+  --longBreak: hsl(105, 16%, 40%);
+}
+
+body {
+  background-color: var(--pomodoro);
+  transition: background-color 1s ease;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  user-select: none;
+}
+
+progress {
+  border-radius: 2px;
+  width: 100%;
+  height: 12px;
+  position: fixed;
+  top: 0;
+}
+
+progress::-webkit-progress-bar {
+ background-color: rgba(0, 0, 0, 0.1);;
+}
+
+progress::-webkit-progress-value {
+  background-color: #fff;
+}
+
+.timer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  text-align: center;
+}
+
+.clock {
+  margin-top: 50px;
+  margin-bottom: 30px;
+  font-size: 15rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  font-family: arial, sans-serif;
+}
+
+.mode-button {
+  font-size: 16px;
+  height: 28px;
+  cursor: pointer;
+  box-shadow: none;
+  font-weight: 300;
+  color: #fff;
+  border: 1px solid transparent;
+  margin: 0px;
+  border-radius: 4px;
+  padding: 2px 12px;
+  background: none;
+}
+
+.mode-button.active {
+  border-color: #fff;
+}
+
+.main-button {
+  cursor: pointer;
+  box-shadow: rgb(235, 235, 235) 0px 6px 0px;
+  font-size: 22px;
+  height: 55px;
+  text-transform: uppercase;
+  color: hsl(175, 26%, 41%);
+  font-weight: bold;
+  width: 200px;
+  background-color: white;
+  border-width: initial;
+  border-style: none;
+  margin: 20px 0px 0px;
+  padding: 0px 12px;
+  border-radius: 4px;
+  transition: color 0.5s ease-in-out 0s;
+}
+
+button:focus, button:active {
+  outline: none;
+}
+
+.main-button.active {
+  transform: translateY(6px);
+  box-shadow: none;
+  outline: none;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 550px) {
+  .clock {
+    font-size: 8rem;
+  }
+}
+
+/* Textbox Style */
+.input-textbox {
+  font-size: 16px; /* Adjust the font size as needed */
+  padding: 10px; /* Padding inside the textbox */
+  margin: 5px 0; /* Margin for spacing outside the textbox */
+  width: calc(100% - 22px); /* Full width minus padding and border */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border: 2px solid #ccc; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #f8f8f8; /* Light grey background */
+  outline: none; /* Remove the outline */
+  transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.input-textbox:focus {
+  border-color: #007bff; /* Change border color when focused */
+}
+
+
+/* sliding completed tasks panel */
+.task-list-panel {
+  position: fixed;
+  right: -250px; /* Start off screen */
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  transition: right 0.5s ease;
+}
+
+.task-list-panel.open {
+  right: 0; /* Slide in */
+}
+
+/* Additional styling for the task list */
+.task-list-panel ul {
+  list-style: none;
+  padding: 20px;
+}
+
+.task-list-panel h2 {
+  text-align: center;
+  padding: 20px 0;
+}
